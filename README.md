@@ -4,6 +4,12 @@
 
 完整资源包含 9 组状态动画和 16 个看向不同方向的姿势。鼠标悬停对应的 5 帧使用同一个端盆姿势，避免连续重复端盆动作。
 
+## v1.2.0 更新
+
+- 待机改为端着钢盆吃白饭：舀饭送到嘴边、空勺退开、闭嘴鼓腮咀嚼，再准备下一口。
+- 六帧通过勺子、白饭、脸颊和眼睑的变化表达动作，固定头部大小、位置和蓝色头发。
+- 仅替换待机行；hover 和其余状态逐像素保持 v1.1.0 原样。
+
 ## v1.1.0 更新
 
 - 更新摘盆后的头部绘制，调整头顶弧度，使头型更饱满。
@@ -13,7 +19,7 @@
 
 ## 下载和安装
 
-从 [Releases](https://github.com/1930850328/dafeiyu-pet/releases/latest) 下载 `dafeiyu-pet-v1.1.0.zip`，解压后选择下面一种方式安装。
+从 [Releases](https://github.com/1930850328/dafeiyu-pet/releases/latest) 下载 `dafeiyu-pet-v1.2.0.zip`，解压后选择下面一种方式安装。
 
 ### 本地桌面宠物
 
@@ -63,7 +69,7 @@ python3 install.py --pets-dir /path/to/pets
 
 | 行（从 0 开始） | 状态 | 有效帧数 |
 | --- | --- | ---: |
-| 0 | 待机 | 6 |
+| 0 | 待机：端盆吃白饭、闭嘴咀嚼 | 6 |
 | 1 | 向右移动 | 8 |
 | 2 | 向左移动 | 8 |
 | 3 | 招手 | 4 |
@@ -76,6 +82,8 @@ python3 install.py --pets-dir /path/to/pets
 
 当前版本的 hover 会直接切到端盆姿势，没有慢慢端下来的过渡。在发布时检查的桌面播放器中，这组帧总共显示约 2.52 秒后恢复待机；播放过程中移出鼠标会恢复底层状态。持续悬停不会永久保持该姿势。其他客户端的触发方式、时长和状态优先级可能不同，图片资源自身不控制这些行为。
 
+吃饭待机使用 6 帧静态精灵图，播放速度由客户端决定。在本次检查的桌面播放器中，一轮约 6.6 秒。动态 WebP 经账号上传链路保存后会变为单帧 PNG，不能通过这个入口保留额外动画帧；本版本沿用标准 PNG 格式。
+
 ## 文件格式
 
 - `pet/spritesheet.png`：完整透明 PNG，`1536 × 2288`，8 列 × 11 行，单帧 `192 × 208`。
@@ -83,7 +91,7 @@ python3 install.py --pets-dir /path/to/pets
 - `install.py`：仅使用 Python 标准库的本地安装脚本。
 - `SHA256SUMS`：发布文件校验值。
 
-资源已通过 v2 布局校验；hover 的 5 帧完全相同，其余动画保持原版。安装脚本已在临时目录验证复制和拒绝覆盖行为；未宣称在所有客户端或操作系统上完成界面实测。
+资源已通过 v2 布局校验；吃饭待机与当前账号中已应用的资源逐像素一致，hover 的 5 帧完全相同，非待机行与 v1.1.0 逐像素一致。安装脚本已在临时目录验证复制和拒绝覆盖行为；未宣称在所有客户端或操作系统上完成界面实测。
 
 ## 使用许可
 
@@ -96,3 +104,5 @@ Dafeiyu — Steel Basin Edition is a custom v2 pet sprite sheet for compatible C
 The hover row contains five identical basin-holding poses. Playback duration depends on the client; it is not an indefinite hold. The sheet includes nine state rows and sixteen look directions. For account-based Pets, import the unchanged PNG with a v2-capable Pets plugin instead of the local installer.
 
 v1.1.0 updates the uncovered head, blue hair palette, maid headband and ahoge. All non-hover rows are pixel-identical to v1.0.0. To upgrade a local installation, move the old pet directory outside the pets folder as a backup, then run the new installer. For account-based Pets, update the existing pet with the new PNG while retaining its ID.
+
+v1.2.0 replaces only the idle row with a six-frame rice-eating loop: scoop, bring rice to the lips, withdraw the empty spoon, chew with closed lips, and prepare the next bite. Head scale, position and blue hair remain stable. Every non-idle row is pixel-identical to v1.1.0. Timing remains controlled by the client; the inspected desktop player takes about 6.6 seconds per idle loop. The release uses the standard static PNG atlas.
