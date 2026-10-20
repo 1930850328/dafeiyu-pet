@@ -4,9 +4,16 @@
 
 完整资源包含 9 组状态动画和 16 个看向不同方向的姿势。鼠标悬停对应的 5 帧使用同一个端盆姿势，避免连续重复端盆动作。
 
+## v1.1.0 更新
+
+- 更新摘盆后的头部绘制，调整头顶弧度，使头型更饱满。
+- 将头顶和刘海的偏紫灰色调整为更接近戴盆状态的蓝色。
+- 优化白色女仆头饰的连续褶边，补回清楚可见的蓝色呆毛。
+- 戴盆待机和其他状态逐像素保持 v1.0.0 原样；hover 仍为 5 帧相同的静止端盆姿势，播放行为没有变化。
+
 ## 下载和安装
 
-从 [Releases](https://github.com/1930850328/dafeiyu-pet/releases/latest) 下载 `dafeiyu-pet-v1.0.0.zip`，解压后选择下面一种方式安装。
+从 [Releases](https://github.com/1930850328/dafeiyu-pet/releases/latest) 下载 `dafeiyu-pet-v1.1.0.zip`，解压后选择下面一种方式安装。
 
 ### 本地桌面宠物
 
@@ -46,6 +53,12 @@ python3 install.py --pets-dir /path/to/pets
 
 此方法要求账号和插件支持 v2 上传。只接受 `1536 × 1872` 图片的旧版上传入口不能直接导入本仓库的 v2 资源，请使用支持 v2 的客户端。桌面本地安装不会自动同步到网页端。
 
+### 从旧版本更新
+
+本地安装用户先把原有的 `dafeiyu-steel-basin` 文件夹移到 `pets` 目录之外备份，再运行新版的 `install.py`。脚本仍拒绝覆盖已有目录。安装后在设置中刷新并重新选择宠物；若图像仍未更新，完全退出应用后重新打开。
+
+使用账号 Pets 列表的用户，把新版 `pet/spritesheet.png` 交给 Pets 插件，要求更新已有的“大肥鱼·钢盆版”并保留原宠物 ID。请勿重复新建同名宠物。
+
 ## 动作说明
 
 | 行（从 0 开始） | 状态 | 有效帧数 |
@@ -81,3 +94,5 @@ python3 install.py --pets-dir /path/to/pets
 Dafeiyu — Steel Basin Edition is a custom v2 pet sprite sheet for compatible ChatGPT / Codex clients. Download the release ZIP, extract it, and run `python3 install.py` (`py -3 install.py` on Windows). Select the pet in Settings → Pets after refreshing. The installer only adds a pet directory and refuses to overwrite an existing one.
 
 The hover row contains five identical basin-holding poses. Playback duration depends on the client; it is not an indefinite hold. The sheet includes nine state rows and sixteen look directions. For account-based Pets, import the unchanged PNG with a v2-capable Pets plugin instead of the local installer.
+
+v1.1.0 updates the uncovered head, blue hair palette, maid headband and ahoge. All non-hover rows are pixel-identical to v1.0.0. To upgrade a local installation, move the old pet directory outside the pets folder as a backup, then run the new installer. For account-based Pets, update the existing pet with the new PNG while retaining its ID.
